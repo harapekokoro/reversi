@@ -1,10 +1,43 @@
 <script setup lang="ts">
-// This starter template is using Vue 3 <script setup> SFCs
-// Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
+
+import { createApp } from 'vue'
+import './style.css'
+
+import { Quasar } from 'quasar'
+import '@quasar/extras/material-icons-round/material-icons-round.css'
+
+import { Nuxt } from 'nuxt'
+
 import HelloWorld from './components/HelloWorld.vue'
+import { ref } from 'vue'
+
+const App = Vue.create()
+
+createApp(App)
+.use(Quasar)
+.mount('#app')
+
+const tab = ref('mail')
+
 </script>
+<!-- <script>
+export default {
+  name: 'App'
+}
+</script> -->
 
 <template>
+  <NuxtPage />
+
+  <q-tabs
+    v-model="tab"
+    class="text-teal"
+  >
+    <q-tab name="mails" icon="mail" label="Mails" />
+    <q-tab name="alarms" icon="alarm" label="Alarms" />
+    <q-tab name="movies" icon="movie" label="Movies" />
+  </q-tabs>
+
   <div>
     <a href="https://vitejs.dev" target="_blank">
       <img src="/vite.svg" class="logo" alt="Vite logo" />
@@ -14,6 +47,7 @@ import HelloWorld from './components/HelloWorld.vue'
     </a>
   </div>
   <HelloWorld msg="Vite + Vue" />
+
 </template>
 
 <style scoped>
